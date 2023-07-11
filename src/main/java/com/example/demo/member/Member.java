@@ -19,7 +19,6 @@ public class Member {
 
     private Integer age;
 
-    @JsonIgnoreProperties({"member"})
     private List<Hobby> hobbyList =new ArrayList<>();
 
     //InnerClass로 응집도를 높여봤다.
