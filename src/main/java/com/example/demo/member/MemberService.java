@@ -12,8 +12,6 @@ import java.util.Optional;
 public class MemberService {
 
     public List<Member> findAll(){
-
-
         return Store.members;
     }
 

@@ -3,6 +3,7 @@ package com.example.demo.hobby;
 import com.example.demo.member.Member;
 import com.example.demo.store.Store;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,14 +11,14 @@ import org.springframework.context.annotation.Lazy;
 
 
 @Data
-
 @AllArgsConstructor
 @NoArgsConstructor
 public class Hobby {
     private Integer id;
-
-    private Member.MemberDto member;
     private String name;
+    @JsonIgnoreProperties({"hobbyList"})
+    private Member member;
+
 
     // InnerClass로 관리
     @Data
@@ -28,19 +29,18 @@ public class Hobby {
 
     // Member만 따로뺀 Dto 생성
 
-    @Data
-    public static class HobbyDto{
-        private Integer id;
-        private String name;
+//    @Data
+//    public static class HobbyDto{
+//        private Integer id;
+//        private String name;
+//        public HobbyDto (String name){
+//            this.id=Store.hobbyIdx;
+//            this.name=name;
+//        }
+//
+//    }
 
-        public HobbyDto (String name){
-            this.id=Store.hobbyIdx;
-            this.name=name;
-        }
-
-    }
-
-    public Hobby createHobby(Member.MemberDto member,String name){
+    public Hobby createHobby(Member member,String name){
         this.id =Store.hobbyIdx++;
         this.member=member;
         this.name=name;

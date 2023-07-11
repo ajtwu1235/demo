@@ -3,6 +3,7 @@ package com.example.demo.member;
 import com.example.demo.hobby.Hobby;
 import com.example.demo.store.Store;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 import org.springframework.context.annotation.Lazy;
 
@@ -18,7 +19,8 @@ public class Member {
 
     private Integer age;
 
-    private List<Hobby.HobbyDto> hobbyList =new ArrayList<>();
+    @JsonIgnoreProperties({"member"})
+    private List<Hobby> hobbyList =new ArrayList<>();
 
     //InnerClass로 응집도를 높여봤다.
     @Data
