@@ -1,6 +1,7 @@
 package com.example.demo.member;
 
 import com.example.demo.hobby.Hobby;
+import com.example.demo.store.MemberHobby;
 import com.example.demo.store.Store;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -19,7 +20,8 @@ public class Member {
 
     private Integer age;
 
-    private List<Hobby> hobbyList =new ArrayList<>();
+    @JsonIgnoreProperties("member")
+    private List<MemberHobby> memberHobbyList =new ArrayList<>();
 
     //InnerClass로 응집도를 높여봤다.
     @Data

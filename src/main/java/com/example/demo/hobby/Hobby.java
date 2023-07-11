@@ -1,6 +1,7 @@
 package com.example.demo.hobby;
 
 import com.example.demo.member.Member;
+import com.example.demo.store.MemberHobby;
 import com.example.demo.store.Store;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -9,6 +10,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.context.annotation.Lazy;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 @Data
 @AllArgsConstructor
@@ -16,8 +20,9 @@ import org.springframework.context.annotation.Lazy;
 public class Hobby {
     private Integer id;
     private String name;
-    @JsonIgnoreProperties({"hobbyList"})
-    private Member member;
+
+    @JsonIgnoreProperties("hobby")
+    private List<MemberHobby> memberHobbyList =new ArrayList<>();
 
 
     // InnerClass로 관리
@@ -40,9 +45,8 @@ public class Hobby {
 //
 //    }
 
-    public Hobby createHobby(Member member,String name){
+    public Hobby createHobby(Member member, String name){
         this.id =Store.hobbyIdx++;
-        this.member=member;
         this.name=name;
         return this;
     }

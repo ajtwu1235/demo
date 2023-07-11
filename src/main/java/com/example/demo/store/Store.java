@@ -12,4 +12,6 @@ public class Store {
     public static List<Hobby> hobbies = new ArrayList<>();
 
     public static int hobbyIdx=1;
+
+    public static List<MemberHobby> memberHobbyList = new ArrayList<>();
 }
